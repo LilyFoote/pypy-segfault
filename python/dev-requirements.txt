@@ -1,0 +1,35 @@
+asgiref<3.7; implementation_name == "pypy"
+attrs==23.1.0
+black==23.3.0
+boto3~=1.27.0
+build==0.10.0
+celery[pytest]==5.3.1
+coverage==7.2.7
+dj-database-url==2.0.0
+django-environ==0.10.0
+django-hashid-field==3.3.7
+django-pgcrypto-fields==2.6.0
+django-stubs==4.2.3; implementation_name == "cpython"
+djangorestframework==3.14.0
+factory-boy==3.2.1
+freezegun==1.2.2
+httpretty==1.1.4
+httpx==0.24.1
+huey==2.4.5
+maturin==1.1.0
+# mssql-django==1.1.1; implementation_name == "cpython"
+mypy==1.4.1; implementation_name == "cpython"
+# mysqlclient==2.1.1
+# psycopg2==2.9.1; implementation_name == "cpython"
+pytest-asyncio==0.21.0
+pytest-django==4.5.2
+pytest-httpx==0.22.0
+pytest==7.4.0
+requests==2.31.0
+syrupy==4.0.5
+temppathlib==1.2.0
+tomli-w==1.0.0
+types-freezegun==1.1.10
+types-requests~=2.31.0
+typing-extensions==4.7.1
+urllib3==1.26.15

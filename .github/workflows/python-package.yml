@@ -1,0 +1,87 @@
+name: Kolo Python Package  CI
+
+on:
+  push:
+    paths:
+      - .github/workflows/python-package.yml
+      - python/**
+  pull_request_target:
+    paths:
+      - .github/workflows/python-package.yml
+      - python/**
+
+jobs:
+  python-package:
+    if:
+      (github.actor != 'dependabot[bot]' && github.event_name == 'push') ||
+      (github.actor == 'dependabot[bot]' && github.event_name == 'pull_request_target')
+    strategy:
+      matrix:
+        python: ["pypy-3.9", "pypy-3.10"]
+        django: ["3.2.0", "4.1.0", "4.2.0"]
+      fail-fast: false
+    runs-on: buildjet-2vcpu-ubuntu-2204	
+    defaults:
+      run:
+        working-directory: ./python
+    steps:
+    - name: Checkout
+      if: ${{ github.event_name != 'pull_request_target' }}
+      uses: actions/checkout@v3
+
+    - name: Checkout PR
+      if: ${{ github.event_name == 'pull_request_target' }}
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+    - uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: python/rust
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python }}
+        cache: "pip"
+        cache-dependency-path: python/dev-requirements.txt
+    - run: pip install -r dev-requirements.txt
+    - run: pip install django~=${{ matrix.django }}
+    - run: pip install kolo[test_generation]
+    - run: pip list
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_sync
+      if: success() || failure()
+      env:
+        PYTHONFAULTHANDLER: 1
+        RUST_BACKTRACE: 1
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_streaming_response
+      if: success() || failure()
+      env:
+        PYTHONFAULTHANDLER: 1
+        RUST_BACKTRACE: 1
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_binary_response
+      if: success() || failure()
+      env:
+        PYTHONFAULTHANDLER: 1
+        RUST_BACKTRACE: 1
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_async
+      if: success() || failure()
+      env:
+        PYTHONFAULTHANDLER: 1
+        RUST_BACKTRACE: 1
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_sync_coverage
+      if: success() || failure()
+      env:
+        PYTHONFAULTHANDLER: 1
+        RUST_BACKTRACE: 1
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_binary_response_coverage
+      if: success() || failure()
+      env:
+        PYTHONFAULTHANDLER: 1
+        RUST_BACKTRACE: 1
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_async_coverage
+      if: success() || failure()
+      env:
+        PYTHONFAULTHANDLER: 1
+        RUST_BACKTRACE: 1
