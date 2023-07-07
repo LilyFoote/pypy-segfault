@@ -1,3 +1,5 @@
+astpretty
+pytest @ git+https://github.com/cfbolz/pytest-pypy-bug@pypy-crash-debug
 asgiref<3.7; implementation_name == "pypy"
 attrs==23.1.0
 black==23.3.0
@@ -24,7 +26,6 @@ mypy==1.4.1; implementation_name == "cpython"
 pytest-asyncio==0.21.0
 pytest-django==4.5.2
 pytest-httpx==0.22.0
-pytest==7.4.0
 requests==2.31.0
 syrupy==4.0.5
 temppathlib==1.2.0
