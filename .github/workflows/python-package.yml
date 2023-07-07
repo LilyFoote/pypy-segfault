@@ -50,37 +50,37 @@ jobs:
     - run: pip install django~=${{ matrix.django }}
     - run: pip install kolo[test_generation]
     - run: pip list
-    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_sync
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_sync -s
       if: success() || failure()
       env:
         PYTHONFAULTHANDLER: 1
         RUST_BACKTRACE: 1
-    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_streaming_response
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_streaming_response -s
       if: success() || failure()
       env:
         PYTHONFAULTHANDLER: 1
         RUST_BACKTRACE: 1
-    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_binary_response
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_binary_response -s
       if: success() || failure()
       env:
         PYTHONFAULTHANDLER: 1
         RUST_BACKTRACE: 1
-    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_async
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_async -s
       if: success() || failure()
       env:
         PYTHONFAULTHANDLER: 1
         RUST_BACKTRACE: 1
-    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_sync_coverage
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_sync_coverage -s
       if: success() || failure()
       env:
         PYTHONFAULTHANDLER: 1
         RUST_BACKTRACE: 1
-    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_binary_response_coverage
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_binary_response_coverage -s
       if: success() || failure()
       env:
         PYTHONFAULTHANDLER: 1
         RUST_BACKTRACE: 1
-    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_async_coverage
+    - run: coverage run -m pytest tests/filters/test_httpx.py::test_get_async_coverage -s
       if: success() || failure()
       env:
         PYTHONFAULTHANDLER: 1
