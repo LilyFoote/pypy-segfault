@@ -1,0 +1,23 @@
+{
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Expose-Headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+    "Content-Encoding": "gzip",
+    "Content-Length": "91",
+    "Content-Security-Policy": "default-src 'none'",
+    "Content-Type": "application/json; charset=utf-8",
+    "Date": "Tue, 10 Aug 2021 12:50:53 GMT",
+    "Referrer-Policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+    "Server": "GitHub.com",
+    "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+    "Vary": "Accept-Encoding, Accept, X-Requested-With",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "deny",
+    "X-GitHub-Media-Type": "github.v3; format=json",
+    "X-GitHub-Request-Id": "8276:5096:198DB4A:1A13F6B:6112762D",
+    "X-RateLimit-Limit": "60",
+    "X-RateLimit-Remaining": "43",
+    "X-RateLimit-Reset": "1628603313",
+    "X-RateLimit-Resource": "core",
+    "X-RateLimit-Used": "17",
+    "X-XSS-Protection": "0"
+}
