@@ -12,9 +12,6 @@ on:
 
 jobs:
   python-package:
-    if:
-      (github.actor != 'dependabot[bot]' && github.event_name == 'push') ||
-      (github.actor == 'dependabot[bot]' && github.event_name == 'pull_request_target')
     strategy:
       matrix:
         python: ["pypy-3.9", "pypy-3.10"]
